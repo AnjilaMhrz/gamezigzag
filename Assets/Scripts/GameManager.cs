@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private int selectedBallIndex;
 
  public BallSelectionUI ballSelectionUI;
+ private bool hasMadeBallSelection = false;
     void Awake()
     {
         if(instance==null)
@@ -33,6 +34,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         // Check if the game is not yet started, the player has made a ball selection, and the player clicks on the ball selection UI buttons
+       if (!gameOver && hasMadeBallSelection)
+        {
+            if (Input.GetMouseButtonDown(0)) // Check for mouse button click
+            {
+                Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Collider2D hitCollider = Physics2D.OverlapPoint(clickPosition);
+
+                // Check if the click hits any of the ball selection UI buttons
+                if (hitCollider != null && hitCollider.CompareTag("BallSelectionButton"))
+                {
+                    StartGame();
+                }
+            }
+        }
         
     }
     public void StartGame()

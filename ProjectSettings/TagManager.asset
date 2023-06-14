@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - diamond
+  - BallSelectionButton
   layers:
   - Default
   - TransparentFX
