@@ -16,6 +16,12 @@ public class GameManager : MonoBehaviour
 
  public BallSelectionUI ballSelectionUI;
  private bool hasMadeBallSelection = false;
+
+
+ public AudioSource audioSource;
+
+
+
     void Awake()
     {
         if(instance==null)
@@ -60,8 +66,11 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+
+        
         UiManager.instance.GameOver();
         ScoreManager.instance.StopScore();
+         audioSource.Play();
         gameOver=true;
     }
 
