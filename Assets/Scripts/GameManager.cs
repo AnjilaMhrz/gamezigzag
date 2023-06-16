@@ -97,10 +97,10 @@ public class GameManager : MonoBehaviour
         hasMadeBallSelection = true;
     }
 
-     public void SetBallMaterialChanger(ballcolorchanger materialChanger)
-    {
-        ballMaterialChanger = materialChanger;
-    }
+    //  public void SetBallMaterialChanger(ballcolorchanger materialChanger)
+    // {
+    //     ballMaterialChanger = materialChanger;
+    // }
 
 
     private void ChangeBallMaterial()
