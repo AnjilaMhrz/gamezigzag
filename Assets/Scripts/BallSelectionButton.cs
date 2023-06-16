@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BallSelectionButton : MonoBehaviour
 {
     private Button button;
+     public int ballIndex;
 
     void Start()
     {
@@ -15,6 +16,6 @@ public class BallSelectionButton : MonoBehaviour
 
     private void SelectBall()
     {
-        GameManager.instance.NextBall();
+        GameManager.instance.SelectBall(ballIndex);
     }
 }

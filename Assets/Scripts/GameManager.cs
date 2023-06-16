@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -93,9 +94,18 @@ public class GameManager : MonoBehaviour
     private void ChangeBallMaterial()
     {
         Renderer ballRenderer = GameObject.FindGameObjectWithTag("Ball").GetComponent<Renderer>();
-        if (ballRenderer != null && ballMaterials.Count > 0)
-        {
-            ballRenderer.material = ballMaterials[selectedBallIndex];
-        }
-    }}
+    if (ballRenderer != null && ballMaterials.Count > 0)
+    {
+        ballRenderer.material = ballMaterials[selectedBallIndex];
+    }
+    }
+
+    public void SelectBall(int ballIndex)
+{
+    selectedBallIndex = ballIndex; // Assign the selected ball index
+    ChangeBallMaterial(); // Change the ball material according to the selected index
+    ballSelectionUI.HideBallSelection(); // Hide the ball selection UI
+    hasMadeBallSelection = true; // Set the flag to indicate that ball selection has been made
+}
+}
 
