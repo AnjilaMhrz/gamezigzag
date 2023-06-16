@@ -6,16 +6,21 @@ using UnityEngine.UI;
 public class BallSelectionButton : MonoBehaviour
 {
     private Button button;
-     public int ballIndex;
+    public Material ballMaterial;
+    public int ballIndex;
+    private ballcolorchanger ballMaterialChanger;
+    
 
     void Start()
     {
-        button = GetComponent<Button>();
+         button = GetComponent<Button>();
         button.onClick.AddListener(SelectBall);
+        ballMaterialChanger = FindObjectOfType<ballcolorchanger>();
     }
 
     private void SelectBall()
     {
-        GameManager.instance.SelectBall(ballIndex);
+        GameManager.instance.SelectBall(ballMaterial);
+        GameManager.instance.SetBallMaterialChanger(ballMaterialChanger);
     }
 }
