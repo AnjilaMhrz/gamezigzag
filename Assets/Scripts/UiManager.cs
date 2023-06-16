@@ -23,12 +23,17 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         highScore1.text="High Score: "+PlayerPrefs.GetInt("highScore").ToString();
+         score.text = "Score: " + PlayerPrefs.GetInt("score").ToString();
 
+        gameOverPanel.SetActive(false);
+        tapText.SetActive(true);
+        zigzagPannel.SetActive(true);
     }
     public void GameStart()
     {
         tapText.SetActive(false);
         zigzagPannel.GetComponent<Animator>().Play("panelUp");
+        score.gameObject.SetActive(true);
     }
     public void GameOver()
     {

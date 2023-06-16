@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
      public GameObject ball;
     public List<Material> ballMaterials;
     private int selectedBallIndex;
+     private bool hasPlayedGameOverSound = false; 
+    
 
  public BallSelectionUI ballSelectionUI;
  private bool hasMadeBallSelection = false;
@@ -70,8 +72,14 @@ public class GameManager : MonoBehaviour
         
         UiManager.instance.GameOver();
         ScoreManager.instance.StopScore();
-         audioSource.Play();
+        Debug.Log("sssss");
+         if (!hasPlayedGameOverSound) // Check if the game over sound has not been played yet
+        {
+            audioSource.Play(); // Play the game over sound
+            hasPlayedGameOverSound = true; // Set the flag to indicate that the sound has been played
+        }
         gameOver=true;
+        
     }
 
     public void NextBall()
