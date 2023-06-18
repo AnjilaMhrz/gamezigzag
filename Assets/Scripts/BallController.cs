@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    private ScoreManager scoreManager;
     public GameObject particle;
     [SerializeField]
     private float speed;
@@ -14,6 +15,7 @@ public class BallController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        scoreManager = FindObjectOfType<ScoreManager>();
 
     }
     // Start is called before the first frame update
@@ -65,6 +67,7 @@ public class BallController : MonoBehaviour
 
             Destroy(other.gameObject);
             Destroy(part,1f);
+            scoreManager.IncreaseScore(50);
         }
     }
 }

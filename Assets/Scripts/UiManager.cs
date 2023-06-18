@@ -10,11 +10,13 @@ public class UiManager : MonoBehaviour
     public GameObject zigzagPannel;
     public GameObject gameOverPanel;
     public GameObject tapText;
+    
    
     public Text score;
     public Text highScore1;
     public Text highScore2;
      private ScoreManager scoreManager;
+      private BallSelectionUI ballSelectionUI;
 
 
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class UiManager : MonoBehaviour
         }
 
         scoreManager = ScoreManager.instance;
+        ballSelectionUI = FindObjectOfType<BallSelectionUI>();
     }
     void Start()
     {
@@ -46,6 +49,11 @@ public class UiManager : MonoBehaviour
         scoreManager.startScore(); 
          score.text = "Score: " + PlayerPrefs.GetInt("score").ToString();
          score.gameObject.SetActive(true);
+
+         if (ballSelectionUI != null)
+        {
+            ballSelectionUI.HideBallSelection();
+        }
         
 
     }
@@ -57,6 +65,8 @@ public class UiManager : MonoBehaviour
         score.text=PlayerPrefs.GetInt("score").ToString();
         highScore2.text= PlayerPrefs.GetInt("highScore").ToString();
         gameOverPanel.SetActive(true);
+
+        ballSelectionUI.HideBallSelection();
     }
     public void Reset()
     {

@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
     }
     void incrementScore()
     {
-        score+=1;
+        score+=5;
     }
     public void startScore()
     {
@@ -47,4 +47,12 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt("highScore",score);
         }
     }
+
+     public void IncreaseScore(int amount)
+    {
+        score += amount;
+        
+    }
+
+
 }

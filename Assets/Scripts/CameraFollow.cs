@@ -5,29 +5,39 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject ball;
-    Vector3 offset;
+    public Transform target;
+    public Vector3 offset;
     public float lerpRate;
     public bool gameOver;
+
+    private Vector3 desiredPosition;
+
+    //private Vector3 desiredPosition;
     void Start()
     {
-        offset=ball.transform.position-transform.position;
-        gameOver=false;
+         gameOver = false;
     }
+
+ 
 
     // Update is called once per frame
     void Update()
     {
-        if(!gameOver)
+       if (!gameOver && target != null)
         {
-            follow();
+            FollowTarget();
         }
     }
-    void follow()
+     private void FollowTarget()
     {
-        Vector3 pos=transform.position;
-        Vector3 tragetPos=ball.transform.position-offset;
-        pos = Vector3.Lerp(pos,tragetPos,lerpRate*Time.deltaTime);
-        transform.position=pos;
+        desiredPosition = target.position + offset;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, lerpRate * Time.deltaTime);
     }
+
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
+    }
+   
+  
 }

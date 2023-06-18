@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class BallSelectionButton : MonoBehaviour
 {
-    private Button button;
-    public Material ballMaterial;
+
+  private Button button;
+private GameManager gameManager;
+    
+ public GameObject ballPrefab;
     
     
 
@@ -14,10 +17,12 @@ public class BallSelectionButton : MonoBehaviour
     {
           button = GetComponent<Button>();
         button.onClick.AddListener(SelectBall);
+
+         gameManager = GameManager.instance;
     }
 
     private void SelectBall()
     {
-        GameManager.instance.SelectBall(ballMaterial);
+        gameManager.SelectBall(ballPrefab);
     }
 }
