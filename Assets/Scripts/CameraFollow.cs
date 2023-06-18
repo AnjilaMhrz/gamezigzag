@@ -32,6 +32,7 @@ public class CameraFollow : MonoBehaviour
     {
         desiredPosition = target.position + offset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, lerpRate * Time.deltaTime);
+        
     }
 
     public void SetTarget(Transform newTarget)
